@@ -5,7 +5,7 @@ to define variables, methods and imports of other Vue compoennts. -->
 import SliderInput from "./components/SliderInput.vue";
 import SliderInput02 from "./components/SliderInput02.vue";
 import SliderInput03 from "./components/SliderInput03.vue";
-import ToggleInput from "./components/ToggleInput.vue";
+//import ToggleInput from "./components/ToggleInput.vue";
 import GeometryView from "./components/GeometryView.vue";
 
 
@@ -21,7 +21,7 @@ var count = ref(0);
 var firstSlider = ref(20);
 var secondSlider = ref(5);
 var thirdSlider = ref(5);
-var runToggle = ref(false);
+//var runToggle = ref(true);
 
 // Define functions
 function increment() {
@@ -41,9 +41,9 @@ function updateValue(newValue, parameterName) {
   }
 }
 
-function updateToggle(newValue) {
-  runToggle.value = newValue;
-}
+//function updateToggle(newValue) {
+  //runToggle.value = newValue;
+//}
 </script>
 
 <!-- Template is a HTML-based syntax that allows you to bind the rendered DOM elements
@@ -76,12 +76,12 @@ with data, objects, functions etc. -->
         v-bind:min="1" v-bind:max="50" v-bind:step="1"
         v-on:updateValue="updateValue"/>
 
-      <ToggleInput title="Run?" v-on:updateValue="updateToggle"></ToggleInput>
+      <ToggleInput title="Mesh?" v-on:updateValue="updateToggle"></ToggleInput>
 
       <h2>Value received in App.vue: {{ firstSlider }}</h2>
       <h2>Value received in App.vue: {{ secondSlider }}</h2>
       <h2>Value received in App.vue: {{ thirdSlider }}</h2>
-      <h2>Value received in App.vue: {{ runToggle }}</h2>
+
     </div>
 
     <div id="content">

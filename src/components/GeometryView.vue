@@ -19,7 +19,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 //const definitionName = 'L05_0.gh'
 
 // Property coming from parent component
-const props = defineProps(['L', 'w', 'h']);
+const props = defineProps(['L', 'w', 'h', 'meshBoolean']);
 //const props = defineProps(["w"]);
 
 // Three js objects
@@ -60,6 +60,11 @@ function animate() {
 
 function createBox(l, w, h) {
   geometry = new THREE.BoxGeometry(l, w, h);
+  //const material = new THREE.MeshStandardMaterial({wireframe: props.meshBoolean, color: skyblue, // red color
+    //metalness: 0.0, // low metalness
+    //roughness: 3.0, // low roughness 
+    //emissive: 0x330000
+  //});
   const material = new THREE.MeshNormalMaterial();
   const sphere = new THREE.Mesh(geometry, material);
   scene.add(sphere);
