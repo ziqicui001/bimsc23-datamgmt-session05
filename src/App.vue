@@ -3,8 +3,11 @@ to define variables, methods and imports of other Vue compoennts. -->
 <script setup>
 // Import other Vue components in order to add them to a template.
 import SliderInput from "./components/SliderInput.vue";
+import SliderInput02 from "./components/SliderInput02.vue";
+import SliderInput03 from "./components/SliderInput03.vue";
 import ToggleInput from "./components/ToggleInput.vue";
 import GeometryView from "./components/GeometryView.vue";
+
 
 // Imports from packages
 
@@ -15,7 +18,9 @@ import { ref } from "vue";
 
 // Define variables and constants
 var count = ref(0);
-var firstSlider = ref(25);
+var firstSlider = ref(20);
+var secondSlider = ref(5);
+var thirdSlider = ref(5);
 var runToggle = ref(false);
 
 // Define functions
@@ -25,8 +30,14 @@ function increment() {
 }
 
 function updateValue(newValue, parameterName) {
-  if (parameterName === "Height") {
+  if (parameterName === "Length") {
     firstSlider.value = newValue;
+  }
+  if (parameterName === "Width") {
+    secondSlider.value = newValue;
+  }
+  if (parameterName === "Height") {
+    thirdSlider.value = newValue;
   }
 }
 
@@ -53,6 +64,14 @@ with data, objects, functions etc. -->
     <div>
       <!-- Vue component injected into App.vue component template.
       That makes it App.vue a parent and SliderInput.vue a child. -->
+      <SliderInput title="Length"
+        v-bind:min="1" v-bind:max="50" v-bind:step="1"
+        v-on:updateValue="updateValue"/>
+
+      <SliderInput title="Width"
+        v-bind:min="1" v-bind:max="50" v-bind:step="1"
+        v-on:updateValue="updateValue"/>
+
       <SliderInput title="Height"
         v-bind:min="1" v-bind:max="50" v-bind:step="1"
         v-on:updateValue="updateValue"/>
@@ -60,11 +79,15 @@ with data, objects, functions etc. -->
       <ToggleInput title="Run?" v-on:updateValue="updateToggle"></ToggleInput>
 
       <h2>Value received in App.vue: {{ firstSlider }}</h2>
+      <h2>Value received in App.vue: {{ secondSlider }}</h2>
+      <h2>Value received in App.vue: {{ thirdSlider }}</h2>
       <h2>Value received in App.vue: {{ runToggle }}</h2>
     </div>
 
     <div id="content">
-      <GeometryView :size="firstSlider" />
+      <GeometryView :L='firstSlider' :w="secondSlider" :h="thirdSlider" />
+      
+       
 
       <!-- uncomment to add another geometryview -->
       <!-- <GeometryView :size="firstSlider"/> -->

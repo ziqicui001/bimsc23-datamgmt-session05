@@ -10,8 +10,17 @@ import { onMounted, onUpdated } from "vue";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
+//import * as THREE from 'three'
+//import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+//import { Rhino3dmLoader } from 'three/addons/loaders/3DMLoader.js'
+//import rhino3dm from 'rhino3dm'
+//import { RhinoCompute } from 'rhinocompute'
+
+//const definitionName = 'L05_0.gh'
+
 // Property coming from parent component
-const props = defineProps(["size"]);
+const props = defineProps(['L', 'w', 'h']);
+//const props = defineProps(["w"]);
 
 // Three js objects
 let renderer, camera, scene, controls, geometry;
@@ -38,7 +47,7 @@ function init() {
   controls = new OrbitControls(camera, renderer.domElement);
 
   // add fun shape
-  createBox(25, 25, 25);
+  createBox(20, 5, 5);
   animate();
 }
 
@@ -58,7 +67,7 @@ function createBox(l, w, h) {
 
 function onSliderChange(color) {
   scene.clear();
-  createBox(props.size, props.size, props.size);
+  createBox(props.L, props.w, props.h);
 }
 
 // This function runs at the beginning of the component lifecycle.
